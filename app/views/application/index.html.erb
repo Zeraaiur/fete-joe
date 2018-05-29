@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="row">
+    <% 9.times do |x| %>
+    <p class="col-xs-12">
+      <% 9.times do |y| %>
+      <div class="square" id =<%= x+1%><%= y+1 %> ><%= x+1%><%= y+1 %></div>
+      <% end %>
+    </p>
+    <% end %>
+  </div>
+</div>
