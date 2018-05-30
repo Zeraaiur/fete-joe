@@ -1,0 +1,180 @@
+.box5 {
+  width:400px;
+  height:400px;
+
+}
+.box {
+  /* we need this to position the pseudo-element */
+  position: relative;
+
+  /* set a fixed size */
+  width:400px;
+  height:400px;
+
+  /* this is just to style the content */
+  padding: 6px;
+  color: white;
+  text-align: right;
+}
+
+.box:before {
+  /* we need this to create the pseudo-element */
+  content: "";
+  display: block;
+
+  /* position the triangle in the top right corner */
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  right: 0;
+
+  /* create the triangle */
+  width: 0;
+  height: 0;
+  border: 200px solid transparent;
+  border-top-color: #d4d4d4;
+  border-left-color: #d4d4d4;
+}
+.content {
+  /* position the content above the triangle */
+  position: relative;
+  z-index: 1;
+}
+
+//--------------------------
+.box2 {
+  /* we need this to position the pseudo-element */
+  position: relative;
+
+  /* set a fixed size */
+  width:400px;
+  height:400px;
+
+  /* this is just to style the content */
+  padding: 6px;
+  color: white;
+  text-align: right;
+}
+
+.box2:before {
+  /* we need this to create the pseudo-element */
+  content: "";
+  display: block;
+
+  /* position the triangle in the top right corner */
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  right: 0;
+
+  /* create the triangle */
+  width: 0;
+  height: 0;
+  border: 200px solid transparent;
+  border-top-color: #d4d4d4;
+  border-right-color: #d4d4d4;
+}
+.content {
+  /* position the content above the triangle */
+  position: relative;
+  z-index: 1;
+}
+//-----------------------
+.box3 {
+  /* we need this to position the pseudo-element */
+  position: relative;
+
+  /* set a fixed size */
+  width:400px;
+  height:400px;
+
+  /* this is just to style the content */
+  padding: 6px;
+  color: white;
+  text-align: right;
+}
+
+.box3:before {
+  /* we need this to create the pseudo-element */
+  content: "";
+  display: block;
+
+  /* position the triangle in the top right corner */
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  right: 0;
+
+  /* create the triangle */
+  width: 0;
+  height: 0;
+  border: 200px solid transparent;
+  border-bottom-color: #d4d4d4;
+  border-right-color: #d4d4d4;
+}
+.content {
+  /* position the content above the triangle */
+  position: relative;
+  z-index: 1;
+}
+//-----------------------
+.box4 {
+  /* we need this to position the pseudo-element */
+  position: relative;
+
+  /* set a fixed size */
+  width:400px;
+  height:400px;
+
+  /* this is just to style the content */
+  padding: 6px;
+  color: white;
+  text-align: right;
+}
+
+.box4:before {
+  /* we need this to create the pseudo-element */
+  content: "";
+  display: block;
+
+  /* position the triangle in the top right corner */
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  right: 0;
+
+  /* create the triangle */
+  width: 0;
+  height: 0;
+  border: 200px solid transparent;
+  border-bottom-color: #d4d4d4;
+  border-left-color: #d4d4d4;
+}
+.content {
+  /* position the content above the triangle */
+  position: relative;
+  z-index: 1;
+}
+//----------------------
+
+.box6 {
+  width:400px;
+  height:400px;
+  background-color:#d4d4d4;
+}
+#a11{
+  border-right:2px solid red!important;
+  border-bottom: 1px solid red!important;
+}
+#a12{
+  border-left:2px solid red!important;
+  border-bottom: 2px solid red!important;
+}
+#a21{
+  border-right:2px solid red!important;
+  border-top: 2px solid red!important;
+}
+#a22{
+  border-left:2px solid red!important;
+  border-top: 2px solid red!important;
+}
