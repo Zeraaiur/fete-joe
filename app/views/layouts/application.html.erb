@@ -6,6 +6,8 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Coustard|Kaushan+Script" rel="stylesheet">
 
   </head>
 
@@ -16,5 +18,5 @@
 
   </body>
       <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
+<%= yield :js %>
 </html>

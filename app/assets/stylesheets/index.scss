@@ -1,26 +1,179 @@
+h2{
+font-family: 'Kaushan Script', cursive;
+}
+h1{
+  color:#BE502F;
+font-family: 'Coustard', serif;
+}
+
+p{
+font-family: 'Coustard', serif;
+font-size:1.1em;
+}
+
 .square{
 width:11%;
 height:10.5vh;
 // border: 1px solid black;
 }
 .active{
-  background-image:url("dragon2-03.png");
-    background-size:90%;
+  background-image:url("princess.gif");
+    background-size:60%;
   background-repeat:no-repeat;
 
 }
 .active2{
-  background-image:url("dragon-01.png");
+  background-image:url("flying_1.gif");
+  background-size:90%;
+  background-repeat:no-repeat;
+
+}
+.active3{
+  background-image:url("flying_1.gif");
   background-size:90%;
   background-repeat:no-repeat;
 }
 
 .first-level{
  position:relative;
+ height:100%;
+ padding:0px;
 }
 .first-level img{
   z-index: -5;
    position: absolute; top:0; left: 0;
    width: 100%;
    height: 100%;
+}
+.flip {
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+}
+.fire {
+  background-image:url("fire.gif");
+  background-size:100%;
+  background-repeat:no-repeat;
+}
+
+
+///-------------------------///
+
+.story-box{
+  height:100%;
+  width:100%;
+  position:absolute;
+  background-color:black;
+  opacity: 0.7;
+}
+.story-picture{
+  height:80%;
+  width:80%;
+  left:10%;
+  right:10%;
+  top:10%;
+  position:absolute;
+  background-image:url("papier.jpg"), linear-gradient(red, yellow);
+  background-image:linear-gradient(-225deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.5) 50%), url('papier.jpg');
+  text-align:center;
+  // display:flex;
+  // align-items:center;
+  // justify-content:center;
+  padding:20px;
+}
+
+
+
+.story{
+  height:80%;
+  width:80%;
+  left:10%;
+  right:10%;
+  top:10%;
+  position:absolute;
+  background-image:url("papier.jpg"), linear-gradient(red, yellow);
+  background-image:linear-gradient(-225deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.5) 50%), url('papier.jpg');
+  text-align:center;
+  // display:flex;
+  // align-items:center;
+  // justify-content:center;
+  padding:20px;
+}
+
+
+
+//lose -- 0000000000000000000000000
+
+
+
+.display-none{
+display:none;
+  }
+.image-lose{
+  background-image:url("lose.jpg");
+  height:100%;
+  width:100%;
+  background-repeat:no-repeat;
+  position:relative;
+
+}
+.lose-text{
+  height:auto;
+  padding:10px;
+  background-color:black;
+  position:absolute;
+  width:100%;
+  bottom:0px;
+}
+.carre-photo{
+  height:250px;
+}
+.carre-texte{
+  margin-bottom:20px;
+}
+#photo3{
+  background-image:url("app3.jpg");
+  background-size:cover;
+  background-position:center;
+  width:100%;
+  height:100%;
+}
+#photo2{
+  background-image:url("app2.jpg");
+  background-size:cover;
+  background-position:bottom;
+    width:100%;
+  height:100%;
+}
+#photo1{
+  background-image:url("app1.jpg");
+  background-size:cover;
+  background-position:center;
+    width:100%;
+  height:100%;
+}
+#photo4{
+  background-image:url("app4.jpg");
+  background-size:cover;
+  background-position:center;
+  width:100%;
+  height:100%;
+}
+#photo5{
+  background-image:url("app5.jpg");
+  background-size:cover;
+  background-position:bottom;
+    width:100%;
+  height:100%;
+}
+#photo6{
+  background-image:url("app6.png");
+  background-size:cover;
+  background-position:center;
+  background-size:280%;
+    width:100%;
+  height:100%;
 }

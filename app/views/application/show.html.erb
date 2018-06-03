@@ -1,11 +1,494 @@
-<div class="container">
-  <div class="row">
-    <% 2.times do |x| %>
-    <p class="col-xs-12">
-      <% 2.times do |y| %>
-      <div class="box5" id =a<%= x+1%><%= y+1 %> > </div>
-      <% end %>
-    </p>
-    <% end %>
+<div class="container first-level">
+
+  <div class="story-box" id="story-box">
   </div>
-</div>
+
+
+  <div class="story" id="story4">
+    <div>
+      <h1>La princesse qui cherchait un nouveau chateau</h1>
+      <h2>Épisode 2 : Chicoutimi Nord</h2>
+      <br>
+      <hr>
+      <br>
+      <p>Contrairement à Cendrillon, la princesse n'avait pas trouvé chaussure à son pied. Contre son gré, elle se mis à regarder les chateaux du côté Nord de la ville, là où les habitants se défendaient en lançant dans roches. </p>
+      <p>La princesse avait beaucoup de préjugés envers le "Ghetto" du nord, et ce, même si son dragon y avait passé la majorité de son enfance.</p>
+      <p>Il faut dire que les charettes et les chevaux qui engorgeaient le pont aux heures de pointes en avaient découragé plus d'un.</p>
+
+
+      <div class="btn btn-warning" id="btn4">Go!</div>
+    </div>
+  </div>
+
+  <div class="story display-none" id="story2">
+    <div class="image-lose">
+
+      <div class="lose-text">
+        <h1>GAME OVER!</h1>
+        <div class="btn btn-warning" id="btn2">RESTART?</div>
+      </div>
+    </div>
+    <div>
+
+
+    </div>
+
+  </div>
+
+
+  <div class="story-picture display-none" id="story5">
+    <div class = "carre-texte">
+      <h1>Chicoutimi Nord</h1>
+      <h2>Le ghetto... Pas question!... Ben, peut-être finalement...</h2>
+      <br>
+      <hr>
+      <br>
+      <p>Le premier chateau visité était extraordinaire. Pas cher, beau, bien situé... Mais trop petit. La princesse et le dragon allait sans doûte se marcher sur les pieds. La visite fût émotive. La discussion qui s'en suivit dans le carosse du dragon également. Quelle soirée!
+      </p>
+      <p>Le deuxième aurait pu faire. En fait le dragon aurait sauté dessus et signé immédiatement (comment ça signe un dragon? Avec une griffe trempée dans l'encre?) Mais la princesse n'était pas certaine. Le ghetto de Chicoutimi lui faisait trop peur...
+      </p>
+      <%= link_to "niveau 2", show_path, :class => "btn btn-warning", :id => "btn5" %>
+    </div>
+    <div class="row">
+      <div class="carre-photo col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        <div id="photo4"></div></div>
+        <div class="carre-photo col-xs-12 col-sm-12 col-md-4 col-lg-4">
+         <div id="photo5"></div></div>
+         <div class="carre-photo col-xs-12 col-sm-12 col-md-4 col-lg-4">
+           <div id="photo6"></div></div>
+
+         </div>
+       </div>
+
+
+
+       <div class="row">
+        <% 9.times do |x| %>
+        <p class="col-xs-12">
+          <% 9.times do |y| %>
+          <div class="square" id =<%= x+1%><%= y+1 %> > </div>
+          <% end %>
+        </p>
+        <% end %>
+      </div>
+      <%= image_tag "bg-03-01.png" %>
+    </div>
+
+
+
+    <% content_for :js do %>
+    <script>
+
+      Array.prototype.sample = function(){
+        return this[Math.floor(Math.random()*this.length)];
+      }
+
+      function keyDownTextField3(e) {
+        const keyCode = e.keyCode;
+        const obstacle = [13,14,17,21,23,24,26,27,36,41,43,44,
+        47,53,54,63,64,68,69,71,72,73,74,77,88,91,93,94]
+
+        let user = parseInt(document.querySelector(".active").id);
+        let dragon1 = parseInt(document.querySelector(".active2").id);
+        if (user === dragon1){
+          document.getElementById("story2").classList.remove("display-none");
+          document.getElementById("story-box").classList.remove("display-none");
+          document.querySelector(".active").classList.remove("active");
+          document.querySelector(".active2").classList.remove("active2");
+          document.querySelector(".active3").classList.remove("active3");
+
+
+        }
+
+
+
+
+  // right
+  if (keyCode === 39) {
+    let idNum = parseInt(document.querySelector(".active").id);
+
+    document.querySelector(".active").classList.remove("active");
+
+    if (idNum % 10 === 9) {
+      document.getElementById(idNum).classList.add("active");
+    }
+    if (obstacle.includes(idNum + 1)) {
+      document.getElementById(idNum).classList.add("active");
+    }
+    else {
+      document.getElementById(idNum).classList.remove("flip");
+      idNum += 1;
+      document.getElementById(idNum).classList.add("active");
+      document.getElementById(idNum).classList.add("flip");
+    }
+  }
+  // left
+  if (keyCode === 37) {
+    let idNum = parseInt(document.querySelector(".active").id);
+
+
+    document.querySelector(".active").classList.remove("active");
+
+
+    if (idNum % 10 === 1) {
+      document.getElementById(idNum).classList.add("active");
+    }
+    if (obstacle.includes(idNum - 1)) {
+      document.getElementById(idNum).classList.add("active");
+    }
+    else {
+      idNum -= 1;
+      document.getElementById(idNum).classList.add("active");
+      document.getElementById(idNum).classList.remove("flip");
+    }
+  }
+  // up
+  if (keyCode === 40) {
+    let idNum = parseInt(document.querySelector(".active").id);
+    document.querySelector(".active").classList.remove("active");
+
+    if (idNum > 90) {
+      document.getElementById(idNum).classList.add("active");
+    }
+    if (obstacle.includes(idNum + 10)) {
+      document.getElementById(idNum).classList.add("active");
+    }
+    else {
+      idNum2 = idNum + 10;
+      document.getElementById(idNum2).classList.add("active");
+
+      if (document.getElementById(idNum).classList.contains("flip")){
+        document.getElementById(idNum2).classList.add("flip");
+        document.getElementById(idNum).classList.remove("flip");
+      }
+
+    }
+
+
+  }
+  // down
+  if (keyCode === 38) {
+    let idNum = parseInt(document.querySelector(".active").id);
+    document.querySelector(".active").classList.remove("active");
+
+    if (idNum < 20) {
+      document.getElementById(idNum).classList.add("active");
+    }
+    if (obstacle.includes(idNum - 10)) {
+      document.getElementById(idNum).classList.add("active");
+    }
+    else {
+      idNum2 = idNum - 10;
+      document.getElementById(idNum2).classList.add("active");
+
+      if (document.getElementById(idNum).classList.contains("flip")){
+        document.getElementById(idNum2).classList.add("flip");
+        document.getElementById(idNum).classList.remove("flip");
+      }
+    }
+  }
+    //check fail
+    if (document.querySelector(".active").id === "37"){
+      document.getElementById("37").classList.add("fire");
+      let count = document.querySelectorAll(".fire").length;
+
+      if (count === 3){
+        document.getElementById("79").classList.remove("fire");
+        document.getElementById("81").classList.remove("fire");
+        document.getElementById("37").classList.remove("fire");
+        document.getElementById("story5").classList.remove("display-none");
+        document.getElementById("story-box").classList.remove("display-none");
+        document.querySelector(".active").classList.remove("active");
+        document.querySelector(".active2").classList.remove("active2");
+        document.querySelector(".active3").classList.remove("active3");
+      }
+    }
+    if (document.querySelector(".active").id === "81"){
+      document.getElementById("81").classList.add("fire");
+      let count = document.querySelectorAll(".fire").length;
+
+      if (count === 3){
+       document.getElementById("79").classList.remove("fire");
+       document.getElementById("81").classList.remove("fire");
+       document.getElementById("37").classList.remove("fire");
+       document.getElementById("story5").classList.remove("display-none");
+       document.getElementById("story-box").classList.remove("display-none");
+       document.querySelector(".active").classList.remove("active");
+       document.querySelector(".active2").classList.remove("active2");
+       document.querySelector(".active3").classList.remove("active3");
+     }
+   }
+   if (document.querySelector(".active").id === "79"){
+    document.getElementById("79").classList.add("fire");
+    let count = document.querySelectorAll(".fire").length;
+
+    if (count === 3){
+      document.getElementById("79").classList.remove("fire");
+      document.getElementById("81").classList.remove("fire");
+      document.getElementById("37").classList.remove("fire");
+      document.getElementById("85").classList.remove("fire");
+      document.getElementById("story5").classList.remove("display-none");
+      document.getElementById("story-box").classList.remove("display-none");
+      document.querySelector(".active").classList.remove("active");
+      document.querySelector(".active2").classList.remove("active2");
+      document.querySelector(".active3").classList.remove("active3");
+    }
+  }
+
+
+}
+
+// --------------------------------------------------------------- //
+
+function keyDownTextField4() {
+
+
+  sampleNum = [10,10,-10,-10,-10,1,1,-1,-1,-1].sample();
+  const obstacle = [17,21,26,27,36,41,
+  47,64,68,69,71,72,77,88,91]
+  let user = parseInt(document.querySelector(".active").id);
+  let dragon1 = parseInt(document.querySelector(".active2").id);
+
+  if (user === dragon1){
+    document.getElementById("story2").classList.remove("display-none");
+    document.getElementById("story-box").classList.remove("display-none");
+    document.querySelector(".active").classList.remove("active");
+    document.querySelector(".active2").classList.remove("active2");
+    document.querySelector(".active3").classList.remove("active3");
+    document.getElementById("79").classList.remove("fire");
+    document.getElementById("81").classList.remove("fire");
+    document.getElementById("37").classList.remove("fire");
+
+
+
+
+
+  }
+
+
+
+  // right
+  if (sampleNum === 1) {
+    let idNum = parseInt(document.querySelector(".active2").id);
+    document.querySelector(".active2").classList.remove("active2");
+
+    if (idNum % 10 === 9) {
+      document.getElementById(idNum).classList.add("active2");
+    }
+    if (obstacle.includes(idNum + 1)) {
+      document.getElementById(idNum).classList.add("active2");
+    }
+    else {
+      idNum += 1;
+      document.getElementById(idNum).classList.add("active2");
+      document.getElementById(idNum).classList.remove("flip");
+    }
+
+  }
+  // left
+  if (sampleNum === -1) {
+    let idNum = parseInt(document.querySelector(".active2").id);
+    document.querySelector(".active2").classList.remove("active2");
+
+    if (idNum % 10 === 1) {
+      document.getElementById(idNum).classList.add("active2");
+    }
+    if (obstacle.includes(idNum - 1)) {
+      document.getElementById(idNum).classList.add("active2");
+    }
+    else {
+      document.getElementById(idNum).classList.remove("flip");
+      idNum -= 1;
+
+      document.getElementById(idNum).classList.add("active2");
+      document.getElementById(idNum).classList.add("flip");
+    }
+  }
+// up
+if (sampleNum === 10) {
+  let idNum = parseInt(document.querySelector(".active2").id);
+  document.querySelector(".active2").classList.remove("active2");
+
+  if (idNum > 90) {
+    document.getElementById(idNum).classList.add("active2");
+  }
+  if (obstacle.includes(idNum + 10)) {
+    document.getElementById(idNum).classList.add("active2");
+
+  }
+  else {
+
+    idNum += 10;
+    document.getElementById(idNum).classList.add("active2");
+
+  }
+}
+  // down
+  if (sampleNum === -10) {
+    let idNum = parseInt(document.querySelector(".active2").id);
+    document.querySelector(".active2").classList.remove("active2");
+
+    if (idNum < 20) {
+      document.getElementById(idNum).classList.add("active2");
+    }
+    if (obstacle.includes(idNum - 10)) {
+      document.getElementById(idNum).classList.add("active2");
+    }
+    else {
+      idNum -= 10;
+      document.getElementById(idNum).classList.add("active2");
+    }
+  }
+
+
+}
+
+function keyDownTextField5() {
+
+
+  sampleNum = [10,-10,,1,-1,].sample();
+  const obstacle = [17,21,26,27,36,41,
+  47,64,68,69,71,72,77,88,91]
+  let user = parseInt(document.querySelector(".active").id);
+  let dragon2 = parseInt(document.querySelector(".active3").id);
+
+  if (user === dragon2){
+    document.getElementById("story2").classList.remove("display-none");
+    document.getElementById("story-box").classList.remove("display-none");
+    document.querySelector(".active").classList.remove("active");
+    document.querySelector(".active2").classList.remove("active2");
+    document.querySelector(".active3").classList.remove("active3");
+    document.getElementById("79").classList.remove("fire");
+    document.getElementById("81").classList.remove("fire");
+    document.getElementById("37").classList.remove("fire");
+
+
+
+
+
+  }
+
+  // right
+  if (sampleNum === 1) {
+    let idNum = parseInt(document.querySelector(".active3").id);
+    document.querySelector(".active3").classList.remove("active3");
+
+    if (idNum % 10 === 9) {
+      document.getElementById(idNum).classList.add("active3");
+    }
+    if (obstacle.includes(idNum + 1)) {
+      document.getElementById(idNum).classList.add("active3");
+    }
+    else {
+      idNum += 1;
+      document.getElementById(idNum).classList.add("active3");
+      document.getElementById(idNum).classList.remove("flip");
+    }
+  }
+  // left
+  if (sampleNum === -1) {
+    let idNum = parseInt(document.querySelector(".active3").id);
+    document.querySelector(".active3").classList.remove("active3");
+
+    if (idNum % 10 === 1) {
+      document.getElementById(idNum).classList.add("active3");
+    }
+    if (obstacle.includes(idNum - 1)) {
+      document.getElementById(idNum).classList.add("active3");
+    }
+    else {
+      document.getElementById(idNum).classList.remove("flip");
+      idNum -= 1;
+
+      document.getElementById(idNum).classList.add("active3");
+      document.getElementById(idNum).classList.add("flip");
+    }
+  }
+// up
+if (sampleNum === 10) {
+  let idNum = parseInt(document.querySelector(".active3").id);
+  document.querySelector(".active3").classList.remove("active3");
+
+  if (idNum > 90) {
+    document.getElementById(idNum).classList.add("active3");
+  }
+  if (obstacle.includes(idNum + 10)) {
+    document.getElementById(idNum).classList.add("active3");
+  }
+  else {
+    idNum += 10;
+    document.getElementById(idNum).classList.add("active3");
+  }
+}
+  // down
+  if (sampleNum === -10) {
+    let idNum = parseInt(document.querySelector(".active3").id);
+    document.querySelector(".active3").classList.remove("active3");
+
+    if (idNum < 20) {
+      document.getElementById(idNum).classList.add("active3");
+    }
+    if (obstacle.includes(idNum - 10)) {
+      document.getElementById(idNum).classList.add("active3");
+    }
+    else {
+      idNum -= 10;
+      document.getElementById(idNum).classList.add("active3");
+    }
+  }
+
+
+}
+
+
+function start2(){
+
+  document.getElementById("story4").classList.add("display-none");
+  document.getElementById("story-box").classList.add("display-none");
+  setTimeout(function(){
+
+
+    document.getElementById("99").classList.add("active2");
+    document.getElementById("19").classList.add("active3");
+    document.addEventListener("keyup", keyDownTextField3, false);
+    var interval = setInterval(keyDownTextField4, 300);
+    var interval = setInterval(keyDownTextField5, 300);
+
+  }, 2000);
+
+}
+
+
+document.getElementById("btn4").addEventListener("click", start2, false);
+
+function restart2(){
+  location.reload();
+}
+
+
+
+document.getElementById("btn2").addEventListener("click", restart2, false);
+document.getElementById("11").classList.add("active");
+
+
+const obstacle = [16, 21, 23, 27, 33, 36, 41, 47, 55, 75, 76, 78, 83, 84, 86, 91, 93, 94];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+<% end %>
