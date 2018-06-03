@@ -47,7 +47,7 @@
       </p>
       <p>Le deuxième aurait pu faire. En fait le dragon aurait sauté dessus et signé immédiatement (comment ça signe un dragon? Avec une griffe trempée dans l'encre?) Mais la princesse n'était pas certaine. Le ghetto de Chicoutimi lui faisait trop peur...
       </p>
-      <%= link_to "niveau 2", show_path, :class => "btn btn-warning", :id => "btn5" %>
+      <%= link_to "niveau 3", niveau3_path, :class => "btn btn-warning", :id => "btn5" %>
     </div>
     <div class="row">
       <div class="carre-photo col-xs-12 col-sm-12 col-md-4 col-lg-4">
@@ -66,7 +66,10 @@
         <% 9.times do |x| %>
         <p class="col-xs-12">
           <% 9.times do |y| %>
-          <div class="square" id =<%= x+1%><%= y+1 %> > </div>
+          <div class="square" id =<%= x+1%><%= y+1 %> >
+<%= x+1%><%= y+1 %>
+
+          </div>
           <% end %>
         </p>
         <% end %>
@@ -77,42 +80,33 @@
 
 
     <% content_for :js do %>
-    <script>
+<script>
 
       Array.prototype.sample = function(){
         return this[Math.floor(Math.random()*this.length)];
       }
 
+var interval1;
+var interval2;
+
+      document.getElementById("11").classList.add("active");
       function keyDownTextField3(e) {
+        let idNum = parseInt(document.querySelector(".active").id);
+
         const keyCode = e.keyCode;
-        const obstacle = [13,14,17,21,23,24,26,27,36,41,43,44,
-        47,53,54,63,64,68,69,71,72,73,74,77,88,91,93,94]
+          const obstacle = [13,14,17,21,23,24,26,27,36,41,43,44,47,53,54,63,64,68,69,71,72,73,74,77,88,91,93,94];
 
         let user = parseInt(document.querySelector(".active").id);
-        let dragon1 = parseInt(document.querySelector(".active2").id);
-        if (user === dragon1){
-          document.getElementById("story2").classList.remove("display-none");
-          document.getElementById("story-box").classList.remove("display-none");
-          document.querySelector(".active").classList.remove("active");
-          document.querySelector(".active2").classList.remove("active2");
-          document.querySelector(".active3").classList.remove("active3");
-
-
-        }
-
-
 
 
   // right
   if (keyCode === 39) {
-    let idNum = parseInt(document.querySelector(".active").id);
-
     document.querySelector(".active").classList.remove("active");
 
     if (idNum % 10 === 9) {
       document.getElementById(idNum).classList.add("active");
     }
-    if (obstacle.includes(idNum + 1)) {
+    else if (obstacle.includes(idNum + 1)) {
       document.getElementById(idNum).classList.add("active");
     }
     else {
@@ -124,16 +118,13 @@
   }
   // left
   if (keyCode === 37) {
-    let idNum = parseInt(document.querySelector(".active").id);
-
-
     document.querySelector(".active").classList.remove("active");
 
 
     if (idNum % 10 === 1) {
       document.getElementById(idNum).classList.add("active");
     }
-    if (obstacle.includes(idNum - 1)) {
+    else if  (obstacle.includes(idNum - 1)) {
       document.getElementById(idNum).classList.add("active");
     }
     else {
@@ -144,13 +135,13 @@
   }
   // up
   if (keyCode === 40) {
-    let idNum = parseInt(document.querySelector(".active").id);
+
     document.querySelector(".active").classList.remove("active");
 
     if (idNum > 90) {
       document.getElementById(idNum).classList.add("active");
     }
-    if (obstacle.includes(idNum + 10)) {
+    else if  (obstacle.includes(idNum + 10)) {
       document.getElementById(idNum).classList.add("active");
     }
     else {
@@ -168,13 +159,13 @@
   }
   // down
   if (keyCode === 38) {
-    let idNum = parseInt(document.querySelector(".active").id);
+
     document.querySelector(".active").classList.remove("active");
 
     if (idNum < 20) {
       document.getElementById(idNum).classList.add("active");
     }
-    if (obstacle.includes(idNum - 10)) {
+    else if  (obstacle.includes(idNum - 10)) {
       document.getElementById(idNum).classList.add("active");
     }
     else {
@@ -190,53 +181,41 @@
     //check fail
     if (document.querySelector(".active").id === "37"){
       document.getElementById("37").classList.add("fire");
-      let count = document.querySelectorAll(".fire").length;
-
-      if (count === 3){
-        document.getElementById("79").classList.remove("fire");
-        document.getElementById("81").classList.remove("fire");
-        document.getElementById("37").classList.remove("fire");
-        document.getElementById("story5").classList.remove("display-none");
-        document.getElementById("story-box").classList.remove("display-none");
-        document.querySelector(".active").classList.remove("active");
-        document.querySelector(".active2").classList.remove("active2");
-        document.querySelector(".active3").classList.remove("active3");
-      }
+      count();
     }
+
+
+    if (document.querySelector(".active").id === "79"){
+      document.getElementById("79").classList.add("fire");
+      count();
+    }
+
+
     if (document.querySelector(".active").id === "81"){
+
       document.getElementById("81").classList.add("fire");
-      let count = document.querySelectorAll(".fire").length;
+      count();
 
-      if (count === 3){
-       document.getElementById("79").classList.remove("fire");
-       document.getElementById("81").classList.remove("fire");
-       document.getElementById("37").classList.remove("fire");
-       document.getElementById("story5").classList.remove("display-none");
-       document.getElementById("story-box").classList.remove("display-none");
-       document.querySelector(".active").classList.remove("active");
-       document.querySelector(".active2").classList.remove("active2");
-       document.querySelector(".active3").classList.remove("active3");
-     }
-   }
-   if (document.querySelector(".active").id === "79"){
-    document.getElementById("79").classList.add("fire");
-    let count = document.querySelectorAll(".fire").length;
-
-    if (count === 3){
-      document.getElementById("79").classList.remove("fire");
-      document.getElementById("81").classList.remove("fire");
-      document.getElementById("37").classList.remove("fire");
-      document.getElementById("85").classList.remove("fire");
-      document.getElementById("story5").classList.remove("display-none");
-      document.getElementById("story-box").classList.remove("display-none");
-      document.querySelector(".active").classList.remove("active");
-      document.querySelector(".active2").classList.remove("active2");
-      document.querySelector(".active3").classList.remove("active3");
     }
+
+
+    function count(){
+      let count = document.querySelectorAll(".fire").length;
+      if (count === 3){
+        end()
+        document.getElementById("story5").classList.remove("display-none");
+      }
+
+
+    }
+
+
+
   }
 
 
-}
+
+
 
 // --------------------------------------------------------------- //
 
@@ -244,25 +223,15 @@ function keyDownTextField4() {
 
 
   sampleNum = [10,10,-10,-10,-10,1,1,-1,-1,-1].sample();
-  const obstacle = [17,21,26,27,36,41,
-  47,64,68,69,71,72,77,88,91]
+  const obstacle = [17, 21, 26, 37,27, 36, 41, 47, 68,69,71,72,77,88,91];
   let user = parseInt(document.querySelector(".active").id);
   let dragon1 = parseInt(document.querySelector(".active2").id);
+  let dragon2 = parseInt(document.querySelector(".active3").id);
+
 
   if (user === dragon1){
+    end();
     document.getElementById("story2").classList.remove("display-none");
-    document.getElementById("story-box").classList.remove("display-none");
-    document.querySelector(".active").classList.remove("active");
-    document.querySelector(".active2").classList.remove("active2");
-    document.querySelector(".active3").classList.remove("active3");
-    document.getElementById("79").classList.remove("fire");
-    document.getElementById("81").classList.remove("fire");
-    document.getElementById("37").classList.remove("fire");
-
-
-
-
-
   }
 
 
@@ -275,7 +244,10 @@ function keyDownTextField4() {
     if (idNum % 10 === 9) {
       document.getElementById(idNum).classList.add("active2");
     }
-    if (obstacle.includes(idNum + 1)) {
+    else if (obstacle.includes(idNum + 1)) {
+      document.getElementById(idNum).classList.add("active2");
+    }
+    else if (dragon2 === dragon1 + 1){
       document.getElementById(idNum).classList.add("active2");
     }
     else {
@@ -293,7 +265,10 @@ function keyDownTextField4() {
     if (idNum % 10 === 1) {
       document.getElementById(idNum).classList.add("active2");
     }
-    if (obstacle.includes(idNum - 1)) {
+    else if (obstacle.includes(idNum - 1)) {
+      document.getElementById(idNum).classList.add("active2");
+    }
+    else if (dragon2 === dragon1){
       document.getElementById(idNum).classList.add("active2");
     }
     else {
@@ -304,25 +279,28 @@ function keyDownTextField4() {
       document.getElementById(idNum).classList.add("flip");
     }
   }
-// up
-if (sampleNum === 10) {
-  let idNum = parseInt(document.querySelector(".active2").id);
-  document.querySelector(".active2").classList.remove("active2");
+  // up
+  if (sampleNum === 10) {
+    let idNum = parseInt(document.querySelector(".active2").id);
+    document.querySelector(".active2").classList.remove("active2");
 
-  if (idNum > 90) {
-    document.getElementById(idNum).classList.add("active2");
+    if (idNum > 90) {
+      document.getElementById(idNum).classList.add("active2");
+    }
+    else if (obstacle.includes(idNum + 10)) {
+      document.getElementById(idNum).classList.add("active2");
+
+    }
+    else if (dragon2 === dragon1 + 10){
+      document.getElementById(idNum).classList.add("active2");
+    }
+    else {
+
+      idNum += 10;
+      document.getElementById(idNum).classList.add("active2");
+
+    }
   }
-  if (obstacle.includes(idNum + 10)) {
-    document.getElementById(idNum).classList.add("active2");
-
-  }
-  else {
-
-    idNum += 10;
-    document.getElementById(idNum).classList.add("active2");
-
-  }
-}
   // down
   if (sampleNum === -10) {
     let idNum = parseInt(document.querySelector(".active2").id);
@@ -331,7 +309,10 @@ if (sampleNum === 10) {
     if (idNum < 20) {
       document.getElementById(idNum).classList.add("active2");
     }
-    if (obstacle.includes(idNum - 10)) {
+    else if (obstacle.includes(idNum - 10)) {
+      document.getElementById(idNum).classList.add("active2");
+    }
+    else if (dragon2 === dragon1 - 10){
       document.getElementById(idNum).classList.add("active2");
     }
     else {
@@ -347,25 +328,14 @@ function keyDownTextField5() {
 
 
   sampleNum = [10,-10,,1,-1,].sample();
-  const obstacle = [17,21,26,27,36,41,
-  47,64,68,69,71,72,77,88,91]
+  const obstacle = [17, 21, 26, 27, 37, 36, 41, 47, 68,69,71,72,77,88,91];
   let user = parseInt(document.querySelector(".active").id);
   let dragon2 = parseInt(document.querySelector(".active3").id);
+  let dragon1 = parseInt(document.querySelector(".active2").id);
 
   if (user === dragon2){
+    end();
     document.getElementById("story2").classList.remove("display-none");
-    document.getElementById("story-box").classList.remove("display-none");
-    document.querySelector(".active").classList.remove("active");
-    document.querySelector(".active2").classList.remove("active2");
-    document.querySelector(".active3").classList.remove("active3");
-    document.getElementById("79").classList.remove("fire");
-    document.getElementById("81").classList.remove("fire");
-    document.getElementById("37").classList.remove("fire");
-
-
-
-
-
   }
 
   // right
@@ -376,7 +346,10 @@ function keyDownTextField5() {
     if (idNum % 10 === 9) {
       document.getElementById(idNum).classList.add("active3");
     }
-    if (obstacle.includes(idNum + 1)) {
+    else if (dragon1 === dragon2 + 1){
+      document.getElementById(idNum).classList.add("active3");
+    }
+    else if (obstacle.includes(idNum + 1)) {
       document.getElementById(idNum).classList.add("active3");
     }
     else {
@@ -393,7 +366,10 @@ function keyDownTextField5() {
     if (idNum % 10 === 1) {
       document.getElementById(idNum).classList.add("active3");
     }
-    if (obstacle.includes(idNum - 1)) {
+    else if (obstacle.includes(idNum - 1)) {
+      document.getElementById(idNum).classList.add("active3");
+    }
+    else if (dragon1 === dragon2 - 1){
       document.getElementById(idNum).classList.add("active3");
     }
     else {
@@ -404,22 +380,25 @@ function keyDownTextField5() {
       document.getElementById(idNum).classList.add("flip");
     }
   }
-// up
-if (sampleNum === 10) {
-  let idNum = parseInt(document.querySelector(".active3").id);
-  document.querySelector(".active3").classList.remove("active3");
+  // up
+  if (sampleNum === 10) {
+    let idNum = parseInt(document.querySelector(".active3").id);
+    document.querySelector(".active3").classList.remove("active3");
 
-  if (idNum > 90) {
-    document.getElementById(idNum).classList.add("active3");
+    if (idNum > 90) {
+      document.getElementById(idNum).classList.add("active3");
+    }
+    else if (obstacle.includes(idNum + 10)) {
+      document.getElementById(idNum).classList.add("active3");
+    }
+    else if (dragon1 === dragon2 + 10){
+      document.getElementById(idNum).classList.add("active3");
+    }
+    else {
+      idNum += 10;
+      document.getElementById(idNum).classList.add("active3");
+    }
   }
-  if (obstacle.includes(idNum + 10)) {
-    document.getElementById(idNum).classList.add("active3");
-  }
-  else {
-    idNum += 10;
-    document.getElementById(idNum).classList.add("active3");
-  }
-}
   // down
   if (sampleNum === -10) {
     let idNum = parseInt(document.querySelector(".active3").id);
@@ -428,7 +407,10 @@ if (sampleNum === 10) {
     if (idNum < 20) {
       document.getElementById(idNum).classList.add("active3");
     }
-    if (obstacle.includes(idNum - 10)) {
+    else if (obstacle.includes(idNum - 10)) {
+      document.getElementById(idNum).classList.add("active3");
+    }
+    else if (dragon1 === dragon2 - 10){
       document.getElementById(idNum).classList.add("active3");
     }
     else {
@@ -442,51 +424,51 @@ if (sampleNum === 10) {
 
 
 function start2(){
-
   document.getElementById("story4").classList.add("display-none");
   document.getElementById("story-box").classList.add("display-none");
   setTimeout(function(){
-
-
     document.getElementById("99").classList.add("active2");
     document.getElementById("19").classList.add("active3");
+
+    interval1 =setInterval(keyDownTextField4, 300);
+    interval2 = setInterval(keyDownTextField5, 300);
     document.addEventListener("keyup", keyDownTextField3, false);
-    var interval = setInterval(keyDownTextField4, 300);
-    var interval = setInterval(keyDownTextField5, 300);
-
   }, 2000);
-
 }
+document.getElementById("btn4").addEventListener("click", function() {
+  start2();
+}, false);
 
 
-document.getElementById("btn4").addEventListener("click", start2, false);
+// document.getElementById("btn1").addEventListener("click", start, false);
 
-function restart2(){
+function restart(){
   location.reload();
 }
 
 
 
-document.getElementById("btn2").addEventListener("click", restart2, false);
-document.getElementById("11").classList.add("active");
+document.getElementById("btn2").addEventListener("click", restart, false);
 
 
-const obstacle = [16, 21, 23, 27, 33, 36, 41, 47, 55, 75, 76, 78, 83, 84, 86, 91, 93, 94];
-
-
+// const obstacle = [16, 21, 23, 27, 33, 36, 41, 47, 55, 75, 76, 78, 83, 84, 86, 91, 93, 94];
 
 
 
 
+function end(){
+  document.getElementById("37").classList.remove("fire");
+  document.getElementById("79").classList.remove("fire");
+  document.getElementById("81").classList.remove("fire");
+  document.getElementById("story-box").classList.remove("display-none");
+  document.querySelector(".active").classList.remove("active");
+  document.querySelector(".active2").classList.remove("active2");
+  document.querySelector(".active3").classList.remove("active3");
+  document.removeEventListener("keyup", keyDownTextField3, false);
+  clearInterval(interval2);
+  clearInterval(interval1);
 
-
-
-
-
-
-
-
-
+}
 
 
 

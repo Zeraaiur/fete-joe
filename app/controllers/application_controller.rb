@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   def index
   end
-    def show
+    def niveau2
+  end
+      def niveau3
   end
 end

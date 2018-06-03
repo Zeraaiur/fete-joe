@@ -1,26 +1,24 @@
-
 <div class="container first-level">
 
-  <div class="story-box" id="story-box">
+  <div class="story-box display-none" id="story-box">
   </div>
 
 
-  <div class="story" id="story1">
+  <div class="story" id="story6">
     <div>
       <h1>La princesse qui cherchait un nouveau chateau</h1>
-      <h2>Épisode 1 : Rivière du Moulin</h2>
+      <h2>Épisode 2 : Chicoutimi Nord</h2>
       <br>
       <hr>
       <br>
-      <p>Il y a pas si longtemps dans un royaume pas si lointain, une jolie princesse cherchait un nouveau chateau où aller vivre avec son dragon.</p>
-      <p>La princesse décida d'abord de tenter sa chance dans le royaume de Rivière du Moulin. Elle savait que les chateaux y étaient abordables et que la qualité de vie y était particulièrement bonne.</p>
-      <p>L'aventure s'annonçait cependant plus périeuse que prévue. Elle devait trouver un chateau convenable rapidement, sans se prendre trop la tête avec son dragon.</p>
+      <p>Contrairement à Cendrillon, la princesse n'avait pas trouvé chaussure à son pied. Contre son gré, elle se mis à regarder les chateaux du côté Nord de la ville, là où les habitants se défendaient en lançant dans roches. </p>
+      <p>La princesse avait beaucoup de préjugés envers le "Ghetto" du nord, et ce, même si son dragon y avait passé la majorité de son enfance.</p>
+      <p>Il faut dire que les charettes et les chevaux qui engorgeaient le pont aux heures de pointes en avaient découragé plus d'un.</p>
 
 
-      <div class="btn btn-warning" id="btn1">Go!</div>
+      <div class="btn btn-warning" id="btn6">Go!</div>
     </div>
   </div>
-
 
   <div class="story display-none" id="story2">
     <div class="image-lose">
@@ -38,49 +36,48 @@
   </div>
 
 
-  <div class="story-picture display-none" id="story3">
+  <div class="story-picture display-none" id="story5">
     <div class = "carre-texte">
-      <h1>Rivière du Moulin</h1>
-      <h2>La déception</h2>
+      <h1>Chicoutimi Nord</h1>
+      <h2>Le ghetto... Pas question!... Ben, peut-être finalement...</h2>
       <br>
       <hr>
       <br>
-      <p>Après avoir visité plusieurs chateaux, la princesse doit venir à l'évidence : ce n'est pas à Rivière du Moulin qu'elle trouvera le palais de ses rêves... Le premier, une rare aubaine, était en fait une grotte humide au niveau sous-sol (rez-de-chaussée selon le chevalier propriétaire). Le deuxième était bien. Mais les voisins du dessus étaient des bardes qui chantaient et dansaient toute la nuit. Impossible..., le dragon avait besoin de ses 15 heures de sommeil par jour pour ne pas devenir désagréable...
-        Le troisième datait d'une autre époque. Les fenêtre avaient été installées avant-même l'invention de la catapulte! C'est vous dire.
+      <p>Le premier chateau visité était extraordinaire. Pas cher, beau, bien situé... Mais trop petit. La princesse et le dragon allait sans doûte se marcher sur les pieds. La visite fût émotive. La discussion qui s'en suivit dans le carosse du dragon également. Quelle soirée!
       </p>
-      <%= link_to "Niveau suivant", niveau2_path, :class => "btn btn-warning", :id => "btn3" %>
+      <p>Le deuxième aurait pu faire. En fait le dragon aurait sauté dessus et signé immédiatement (comment ça signe un dragon? Avec une griffe trempée dans l'encre?) Mais la princesse n'était pas certaine. Le ghetto de Chicoutimi lui faisait trop peur...
+      </p>
+      <%= link_to "niveau 3", niveau3_path, :class => "btn btn-warning", :id => "btn5" %>
     </div>
     <div class="row">
       <div class="carre-photo col-xs-12 col-sm-12 col-md-4 col-lg-4">
-        <div id="photo1"></div></div>
+        <div id="photo4"></div></div>
         <div class="carre-photo col-xs-12 col-sm-12 col-md-4 col-lg-4">
-         <div id="photo2"></div></div>
+         <div id="photo5"></div></div>
          <div class="carre-photo col-xs-12 col-sm-12 col-md-4 col-lg-4">
-           <div id="photo3"></div></div>
+           <div id="photo6"></div></div>
 
          </div>
        </div>
+
 
 
        <div class="row">
         <% 9.times do |x| %>
         <p class="col-xs-12">
           <% 9.times do |y| %>
-          <div class="square" id =<%= x+1%><%= y+1 %> ></div>
+          <div class="square" id =<%= x+1%><%= y+1 %> > <%= x+1%><%= y+1 %>  </div>
           <% end %>
         </p>
         <% end %>
       </div>
-      <%= image_tag "bg-01.png" %>
+      <%= image_tag "bg-04-01.png" %>
     </div>
 
-    <% content_for :js do %>
-    <script>
+<!--
+   <% content_for :js do %>
+<script>
 
-
-
-      var interval1;
-      var interval2;
       Array.prototype.sample = function(){
         return this[Math.floor(Math.random()*this.length)];
       }
@@ -91,9 +88,10 @@
         let idNum = parseInt(document.querySelector(".active").id);
 
         const keyCode = e.keyCode;
-        const obstacle = [16, 21, 23, 27, 33, 36, 41, 47, 55, 75, 76, 78, 83, 84, 86, 91, 93, 94];
+          const obstacle = [12, 17, 18, 22, 27, 33, 37, 43, 46, 48, 65, 68, 77, 78, 79, 83, 84, 85,87,88,89,96,97,98,99];
 
         let user = parseInt(document.querySelector(".active").id);
+
 
   // right
   if (keyCode === 39) {
@@ -181,15 +179,15 @@
     }
 
 
-    if (document.querySelector(".active").id === "82"){
-      document.getElementById("82").classList.add("fire");
+    if (document.querySelector(".active").id === "79"){
+      document.getElementById("79").classList.add("fire");
       count();
     }
 
 
-    if (document.querySelector(".active").id === "85"){
+    if (document.querySelector(".active").id === "81"){
 
-      document.getElementById("85").classList.add("fire");
+      document.getElementById("81").classList.add("fire");
       count();
 
     }
@@ -453,15 +451,12 @@ document.getElementById("btn2").addEventListener("click", restart, false);
 
 function end(){
   document.getElementById("37").classList.remove("fire");
-  document.getElementById("82").classList.remove("fire");
-  document.getElementById("85").classList.remove("fire");
+  document.getElementById("79").classList.remove("fire");
+  document.getElementById("81").classList.remove("fire");
   document.getElementById("story-box").classList.remove("display-none");
   document.querySelector(".active").classList.remove("active");
   document.querySelector(".active2").classList.remove("active2");
   document.querySelector(".active3").classList.remove("active3");
-  document.removeEventListener("keyup", keyDownTextField, false);
-  clearInterval(interval2);
-  clearInterval(interval1);
 
 }
 
@@ -469,3 +464,6 @@ function end(){
 
 </script>
 <% end %>
+  const obstacle = [12, 17, 18, 22, 27, 33, 37, 43, 46, 48, 65, 68,83, 84, 85,87,88,96];
+        const obstacle = [12, 17, 18, 22, 27, 33, 37, 43, 46, 48, 65, 68, 77, 78, 79, 83, 84, 85,87,88,89,96,97,98,99];
+ -->
